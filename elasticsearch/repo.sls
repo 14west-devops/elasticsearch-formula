@@ -3,7 +3,7 @@
 {%- if elasticsearch.major_version >= 5 %}
   {%- if elasticsearch.community_version == True %}
     {%- set repo_url = 'https://artifacts.elastic.co/packages/oss-' ~ (elasticsearch.major_version|string) ~ '.x' %}
-  {%- elif elasticsearch.community_version != True %}
+  {%- else %}
     {%- set repo_url = 'https://artifacts.elastic.co/packages/' ~ (elasticsearch.major_version|string) ~ '.x' %}
   {%- endif %}
   {%- else %}
