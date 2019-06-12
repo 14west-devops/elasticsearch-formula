@@ -1,7 +1,7 @@
 elasticsearch:
   version: 2.4.2-1
   use_repo: True
-  community_version: True
+  community_version: False
   config:
     cluster.name: my-application
     node.name: node2
@@ -21,6 +21,7 @@ elasticsearch:
     ES_HEAP_SIZE: 8g
     MAX_OPEN_FILES: 65535
     ES_JAVA_OPTS: -Dlog4j2.disable.jmx=true
+    ES_PATH_CONF: /etc/elasticsearch
   plugins:
     lang-python: lang-python
     kopf: lmenezes/elasticsearch-kopf

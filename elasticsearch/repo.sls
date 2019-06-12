@@ -1,7 +1,7 @@
 {% from "elasticsearch/settings.sls" import elasticsearch with context %}
 
 {%- if elasticsearch.major_version >= 5 %}
-  {%- if elasticsearch_map.community_version == True %}
+  {%- if salt['pillar.get']('elasticsearch:community_version', False) %}
     {%- set repo_url = 'https://artifacts.elastic.co/packages/oss-' ~ (elasticsearch.major_version|string) ~ '.x' %}
   {%- else %}
     {%- set repo_url = 'https://artifacts.elastic.co/packages/' ~ (elasticsearch.major_version|string) ~ '.x' %}
@@ -14,6 +14,7 @@
 apt-transport-https:
   pkg.installed
 {%- endif %}
+
 
 elasticsearch_repo:
   pkgrepo.managed:

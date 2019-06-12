@@ -8,3 +8,7 @@
 merge=salt['pillar.get']('elasticsearch', {}),
 default='default')
 %}
+
+{%- if salt['pillar.get']('elasticsearch:community_version', False) %}
+{% do elasticsearch_map.update( {'pkg': 'elasticsearch-oss' } ) %}
+{% endif %}
